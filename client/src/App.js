@@ -59,7 +59,7 @@ function App() {
         />
         <Container>
           <Router>
-            <TabContainer path="/" />
+            <TabContainer path="/" selectedTab={"all_items"}/>
             <UserRegistration path="/register" setUserName={setUserName} userName={userName} email={email}/>
           </Router>
         </Container>

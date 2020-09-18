@@ -21,13 +21,13 @@ const ItemSchema = new mongoose.Schema({
     },
     strVal1: {
         type: String,
-        minlength: [5, "name must be at least 5 chars"],
-        required: [true, "name field is required"]
+        minlength: [5, "strVal1 must be at least 5 chars"],
+        required: [true, "strVal1 field is required"]
     },
     strVal2: {
         type: String,
-        minlength: [3, "name must be at least 8 chars"],
-        required: [true, "name field is required"]
+        minlength: [3, "strVal2 must be at least 8 chars"],
+        required: [true, "strVal2 field is required"]
     },
     subItems: [SubItemSchema]    
 })
