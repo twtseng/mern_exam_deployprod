@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Nav, Navbar, Button } from 'react-bootstrap';
 import { Link } from '@reach/router';
 
 const AppNavBar = props => {
@@ -7,6 +7,10 @@ const AppNavBar = props => {
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">{props.appTitle}</Navbar.Brand>
             <Navbar.Toggle />
+            <Nav className="mr-auto">
+            <Nav.Link href="/item/new">New Item</Nav.Link>
+            <Nav.Link href="/">List</Nav.Link>
+            </Nav>
             <Navbar.Collapse className="justify-content-end">
             {
                 props.displayName

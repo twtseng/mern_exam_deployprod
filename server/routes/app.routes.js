@@ -14,6 +14,7 @@ module.exports = app => {
     app.put("/api/items", ItemController.addItem);
     app.delete("/api/items/:id", ItemController.deleteItem);
     app.patch("/api/items/:id", ItemController.updateItem);
+    app.get("/api/items/:id", ItemController.getItemById);
     app.put("/api/items/:id/subitem", ItemController.addSubItem);
     app.get("/login/github_redirect", LoginGithub.redirect);
     app.get("/login/github_login", LoginGithub.login);

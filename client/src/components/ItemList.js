@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { navigate } from '@reach/router';
 
 const ItemList = props => {
     const deleteItem = player_id => {
@@ -26,7 +27,7 @@ const ItemList = props => {
                     <tr>
                     <td>{p.name}</td>
                     <td>{p.strVal1}</td>
-                    <td><Button onClick={() => deleteItem(p._id)}>Edit</Button>  <Button onClick={() => deleteItem(p._id)}>Delete</Button></td>
+                    <td><Button onClick={() => navigate(`/item/${p._id}`)}>Edit</Button>  <Button onClick={() => deleteItem(p._id)}>Delete</Button></td>
                     </tr>
                 )
             }

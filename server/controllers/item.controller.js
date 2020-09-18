@@ -27,7 +27,14 @@ module.exports.deleteItem = (req, result) => {
         , result: obj}))
     .catch(err => result.status(400).json({ status: "failed", errors: err.errors }));
 };
-
+module.exports.getItemById = (req, result) => {
+    itemModel.Item.findOne({ _id: req.params.id })
+    .then(obj => result.json(
+        { status: "succeeded"
+        , message: `getItemById succeeded, id=${obj._id}`
+        , result: obj}))
+        .catch(err => result.status(400).json({ status: "failed", errors: err.errors }));
+};
 module.exports.getAllItems = (req, result) => {
     itemModel.Item.find()
     .then(objs => result.json(

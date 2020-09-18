@@ -8,7 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AppNavBar from './components/AppNavBar';
 import UserRegistration from './components/UserRegistration';
-import TabContainer from './components/TabContainer';
+import ItemList from './components/ItemList';
+import ItemAdd from './components/ItemAdd';
+import ItemEdit from './components/ItemEdit';
 
 function App() {
   const [socket] = React.useState(() => io(":8000"));
@@ -18,8 +20,15 @@ function App() {
   const [userName, setUserName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [requireLogin, setRequireLogin] = React.useState(false);
-  
+  const [items, setItems] = React.useState([]);
+
+  const refreshItems = () => {
+    axios.get("http://localhost:8000/api/items")
+    .then(response => setItems(response.data.result))
+  }
+
   React.useEffect(() => {
+    refreshItems();
     socket.on('new_message_from_server', msg => {
       setChatMessages(prevMessages => { return [msg, ...prevMessages]})
     });
@@ -46,6 +55,7 @@ function App() {
     })
     .catch(err => alert(err));
   }
+
   return (
     <div className="App">
       <AppNavBar
@@ -59,7 +69,9 @@ function App() {
         />
         <Container>
           <Router>
-            <TabContainer path="/" selectedTab={"all_items"}/>
+            <ItemList path="/" items={items} refreshItems={refreshItems}/>
+            <ItemAdd path="/item/new" items={items} refreshItems={refreshItems}/>
+            <ItemEdit path="/item/:id" items={items} refreshItems={refreshItems}/>
             <UserRegistration path="/register" setUserName={setUserName} userName={userName} email={email}/>
           </Router>
         </Container>
