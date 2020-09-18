@@ -8,8 +8,8 @@ const AppNavBar = props => {
             <Navbar.Brand href="/">{props.appTitle}</Navbar.Brand>
             <Navbar.Toggle />
             <Nav className="mr-auto">
+            <Nav.Link href="/">All Items</Nav.Link>    
             <Nav.Link href="/item/new">New Item</Nav.Link>
-            <Nav.Link href="/">List</Nav.Link>
             </Nav>
             <Navbar.Collapse className="justify-content-end">
             {

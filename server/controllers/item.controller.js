@@ -28,6 +28,7 @@ module.exports.deleteItem = (req, result) => {
     .catch(err => result.status(400).json({ status: "failed", errors: err.errors }));
 };
 module.exports.getItemById = (req, result) => {
+    console.log(`getItemById: ${req.params.id}`);
     itemModel.Item.findOne({ _id: req.params.id })
     .then(obj => result.json(
         { status: "succeeded"
@@ -36,6 +37,7 @@ module.exports.getItemById = (req, result) => {
         .catch(err => result.status(400).json({ status: "failed", errors: err.errors }));
 };
 module.exports.getAllItems = (req, result) => {
+    console.log(`getAllItems: ${JSON.stringify(req.body)}`);
     itemModel.Item.find()
     .then(objs => result.json(
         { status: "succeeded"

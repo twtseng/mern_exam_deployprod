@@ -24,10 +24,10 @@ const ItemList = props => {
         <tbody>
             {
                 props.items.map(p =>
-                    <tr>
+                    <tr key={p._id}>
                     <td>{p.name}</td>
                     <td>{p.strVal1}</td>
-                    <td><Button onClick={() => navigate(`/item/${p._id}`)}>Edit</Button>  <Button onClick={() => deleteItem(p._id)}>Delete</Button></td>
+                    <td><Button onClick={() => navigate(`/item/${p._id}/edit`)}>Edit</Button> <Button onClick={() => navigate(`/item/${p._id}`)}>Edit Subitems</Button>  <Button onClick={() => deleteItem(p._id)}>Delete</Button></td>
                     </tr>
                 )
             }

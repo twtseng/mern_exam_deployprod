@@ -11,6 +11,7 @@ import UserRegistration from './components/UserRegistration';
 import ItemList from './components/ItemList';
 import ItemAdd from './components/ItemAdd';
 import ItemEdit from './components/ItemEdit';
+import ItemSubitems from './components/ItemSubitems';
 
 function App() {
   const [socket] = React.useState(() => io(":8000"));
@@ -71,7 +72,8 @@ function App() {
           <Router>
             <ItemList path="/" items={items} refreshItems={refreshItems}/>
             <ItemAdd path="/item/new" items={items} refreshItems={refreshItems}/>
-            <ItemEdit path="/item/:id" items={items} refreshItems={refreshItems}/>
+            <ItemEdit path="/item/:id/edit" items={items} refreshItems={refreshItems}/>
+            <ItemSubitems path="/item/:id" />
             <UserRegistration path="/register" setUserName={setUserName} userName={userName} email={email}/>
           </Router>
         </Container>
